@@ -1,0 +1,8 @@
+Flask
+Flask-SQLAlchemy
+Celery
+Gunicorn
+redis
+flasgger
+flask_limiter
+flask_socketio
