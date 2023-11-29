@@ -21,7 +21,7 @@ app.config['CELERY_RESULT_BACKEND'] = 'redis://redis:6379/0'
 
 app.config['CELERYBEAT_SCHEDULE'] = {
     'run-reminder-task': {
-        'task': 'celery_tasks.reminder_task',
+        'task': 'application.celery_tasks.reminder_task',
         'schedule': timedelta(minutes=0.2),
     },
 }
