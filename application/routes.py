@@ -4,7 +4,7 @@ from flask import request, jsonify
 
 from application import app, db
 from application import socketio
-from application.auth import auth_required
+from application.auth import auth_required, get_user_id
 from application.models import User, Subscription, Event
 
 
@@ -284,7 +284,7 @@ def subscribe_to_event(event_id):
         description: Event or user not found
     """
     event = Event.query.get_or_404(event_id)
-    user_id = request.headers.get('Authorization')
+    user_id = get_user_id(request.headers.get('Authorization'))
 
     subscription = Subscription(event_id=event.id, user_id=user_id)
     db.session.add(subscription)
